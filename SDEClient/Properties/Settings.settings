@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SDEClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="服务平台增强工具_UPDATE_UPDATE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:9000/SDETools/UPDATE.asmx</Value>
+    </Setting>
+    <Setting Name="服务平台增强工具_Remind_RemindTools" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:9000/SDETools/RemindTools.asmx</Value>
+    </Setting>
+    <Setting Name="服务平台增强工具_Attachment_AttachmentTools" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:9000/SDETools/AttachmentTools.asmx</Value>
+    </Setting>
+    <Setting Name="Dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Path" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\Attachment\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

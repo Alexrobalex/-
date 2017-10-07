@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://SDETools/RemindTools/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://SDETools/RemindTools/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://SDETools/RemindTools/">
+      <s:element name="GetEngineer">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEngineerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEngineerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemindList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EngineerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Date_S" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Date_E" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemindListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRemindListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTestHosp">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTestHospResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTestHospResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUnitRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Hosp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUnitRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetUnitRangeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkloadGroup">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetWorkloadGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkloadGroupResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT_S" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT_E" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkloadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthorize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthorizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAuthorizeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEngineerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEngineer" />
+  </wsdl:message>
+  <wsdl:message name="GetEngineerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEngineerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemindList" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemindListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDate" />
+  </wsdl:message>
+  <wsdl:message name="GetDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTestHospSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTestHosp" />
+  </wsdl:message>
+  <wsdl:message name="GetTestHospSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTestHospResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:SetUnitRange" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:SetUnitRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkloadGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkloadGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkload" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuthorize" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuthorizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEngineerHttpGetIn" />
+  <wsdl:message name="GetEngineerHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListHttpGetIn">
+    <wsdl:part name="EngineerName" type="s:string" />
+    <wsdl:part name="Date_S" type="s:string" />
+    <wsdl:part name="Date_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetDateHttpGetIn" />
+  <wsdl:message name="GetDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTestHospHttpGetIn" />
+  <wsdl:message name="GetTestHospHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeHttpGetIn">
+    <wsdl:part name="Unit" type="s:string" />
+    <wsdl:part name="Hosp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadGroupHttpGetIn" />
+  <wsdl:message name="GetWorkloadGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadHttpGetIn">
+    <wsdl:part name="GroupID" type="s:string" />
+    <wsdl:part name="DT_S" type="s:string" />
+    <wsdl:part name="DT_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeHttpGetIn">
+    <wsdl:part name="Token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetEngineerHttpPostIn" />
+  <wsdl:message name="GetEngineerHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListHttpPostIn">
+    <wsdl:part name="EngineerName" type="s:string" />
+    <wsdl:part name="Date_S" type="s:string" />
+    <wsdl:part name="Date_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRemindListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetDateHttpPostIn" />
+  <wsdl:message name="GetDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTestHospHttpPostIn" />
+  <wsdl:message name="GetTestHospHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeHttpPostIn">
+    <wsdl:part name="Unit" type="s:string" />
+    <wsdl:part name="Hosp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetUnitRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadGroupHttpPostIn" />
+  <wsdl:message name="GetWorkloadGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadHttpPostIn">
+    <wsdl:part name="GroupID" type="s:string" />
+    <wsdl:part name="DT_S" type="s:string" />
+    <wsdl:part name="DT_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkloadHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeHttpPostIn">
+    <wsdl:part name="Token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorizeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="RemindToolsSoap">
+    <wsdl:operation name="GetEngineer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得工程师列表</wsdl:documentation>
+      <wsdl:input message="tns:GetEngineerSoapIn" />
+      <wsdl:output message="tns:GetEngineerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得对应工程师的提醒列表</wsdl:documentation>
+      <wsdl:input message="tns:GetRemindListSoapIn" />
+      <wsdl:output message="tns:GetRemindListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得当前日期</wsdl:documentation>
+      <wsdl:input message="tns:GetDateSoapIn" />
+      <wsdl:output message="tns:GetDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得测试医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTestHospSoapIn" />
+      <wsdl:output message="tns:GetTestHospSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提交医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:SetUnitRangeSoapIn" />
+      <wsdl:output message="tns:SetUnitRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计工作组</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadGroupSoapIn" />
+      <wsdl:output message="tns:GetWorkloadGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadSoapIn" />
+      <wsdl:output message="tns:GetWorkloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取授权</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthorizeSoapIn" />
+      <wsdl:output message="tns:GetAuthorizeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RemindToolsHttpGet">
+    <wsdl:operation name="GetEngineer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得工程师列表</wsdl:documentation>
+      <wsdl:input message="tns:GetEngineerHttpGetIn" />
+      <wsdl:output message="tns:GetEngineerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得对应工程师的提醒列表</wsdl:documentation>
+      <wsdl:input message="tns:GetRemindListHttpGetIn" />
+      <wsdl:output message="tns:GetRemindListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得当前日期</wsdl:documentation>
+      <wsdl:input message="tns:GetDateHttpGetIn" />
+      <wsdl:output message="tns:GetDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得测试医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTestHospHttpGetIn" />
+      <wsdl:output message="tns:GetTestHospHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提交医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:SetUnitRangeHttpGetIn" />
+      <wsdl:output message="tns:SetUnitRangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计工作组</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadGroupHttpGetIn" />
+      <wsdl:output message="tns:GetWorkloadGroupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadHttpGetIn" />
+      <wsdl:output message="tns:GetWorkloadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取授权</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthorizeHttpGetIn" />
+      <wsdl:output message="tns:GetAuthorizeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RemindToolsHttpPost">
+    <wsdl:operation name="GetEngineer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得工程师列表</wsdl:documentation>
+      <wsdl:input message="tns:GetEngineerHttpPostIn" />
+      <wsdl:output message="tns:GetEngineerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得对应工程师的提醒列表</wsdl:documentation>
+      <wsdl:input message="tns:GetRemindListHttpPostIn" />
+      <wsdl:output message="tns:GetRemindListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得当前日期</wsdl:documentation>
+      <wsdl:input message="tns:GetDateHttpPostIn" />
+      <wsdl:output message="tns:GetDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得测试医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTestHospHttpPostIn" />
+      <wsdl:output message="tns:GetTestHospHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提交医院分区划片信息</wsdl:documentation>
+      <wsdl:input message="tns:SetUnitRangeHttpPostIn" />
+      <wsdl:output message="tns:SetUnitRangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计工作组</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadGroupHttpPostIn" />
+      <wsdl:output message="tns:GetWorkloadGroupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工作量负荷统计</wsdl:documentation>
+      <wsdl:input message="tns:GetWorkloadHttpPostIn" />
+      <wsdl:output message="tns:GetWorkloadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取授权</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthorizeHttpPostIn" />
+      <wsdl:output message="tns:GetAuthorizeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RemindToolsSoap" type="tns:RemindToolsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEngineer">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetEngineer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetRemindList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetTestHosp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <soap:operation soapAction="http://SDETools/RemindTools/SetUnitRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetWorkloadGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetWorkload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <soap:operation soapAction="http://SDETools/RemindTools/GetAuthorize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RemindToolsSoap12" type="tns:RemindToolsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEngineer">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetEngineer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetRemindList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetTestHosp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <soap12:operation soapAction="http://SDETools/RemindTools/SetUnitRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetWorkloadGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetWorkload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <soap12:operation soapAction="http://SDETools/RemindTools/GetAuthorize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RemindToolsHttpGet" type="tns:RemindToolsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetEngineer">
+      <http:operation location="/GetEngineer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <http:operation location="/GetRemindList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <http:operation location="/GetDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <http:operation location="/GetTestHosp" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <http:operation location="/SetUnitRange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <http:operation location="/GetWorkloadGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <http:operation location="/GetWorkload" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <http:operation location="/GetAuthorize" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RemindToolsHttpPost" type="tns:RemindToolsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetEngineer">
+      <http:operation location="/GetEngineer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemindList">
+      <http:operation location="/GetRemindList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDate">
+      <http:operation location="/GetDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestHosp">
+      <http:operation location="/GetTestHosp" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUnitRange">
+      <http:operation location="/SetUnitRange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkloadGroup">
+      <http:operation location="/GetWorkloadGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkload">
+      <http:operation location="/GetWorkload" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthorize">
+      <http:operation location="/GetAuthorize" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RemindTools">
+    <wsdl:port name="RemindToolsSoap" binding="tns:RemindToolsSoap">
+      <soap:address location="http://127.0.0.1:9000/SDETools/RemindTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemindToolsSoap12" binding="tns:RemindToolsSoap12">
+      <soap12:address location="http://127.0.0.1:9000/SDETools/RemindTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemindToolsHttpGet" binding="tns:RemindToolsHttpGet">
+      <http:address location="http://127.0.0.1:9000/SDETools/RemindTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemindToolsHttpPost" binding="tns:RemindToolsHttpPost">
+      <http:address location="http://127.0.0.1:9000/SDETools/RemindTools.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

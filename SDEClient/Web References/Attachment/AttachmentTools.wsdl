@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://SDETools/AttachmentTools/" xmlns:s1="http://SDETools/AttachmentTools/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://SDETools/AttachmentTools/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://SDETools/AttachmentTools/">
+      <s:element name="Select">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AttachmentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Index">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="REQCODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT_S" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT_E" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IndexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IndexResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Save">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="REQCODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fs" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_Name_new" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_Desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Proprogress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDateTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDateTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_ID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PosOffset" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="BlockLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetREQUESTS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="REQCODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetREQUESTSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetREQUESTSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachmentNum">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAttachmentNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttachmentNumResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+    </s:schema>
+    <s:schema targetNamespace="http://SDETools/AttachmentTools/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectSoapIn">
+    <wsdl:part name="parameters" element="tns:Select" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IndexSoapIn">
+    <wsdl:part name="parameters" element="tns:Index" />
+  </wsdl:message>
+  <wsdl:message name="IndexSoapOut">
+    <wsdl:part name="parameters" element="tns:IndexResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="SaveSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DownFile" />
+  </wsdl:message>
+  <wsdl:message name="DownFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DownFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetREQUESTS" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetREQUESTSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentNumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttachmentNum" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentNumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttachmentNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectHttpGetIn">
+    <wsdl:part name="AttachmentID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IndexHttpGetIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+    <wsdl:part name="DT_S" type="s:string" />
+    <wsdl:part name="DT_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IndexHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="SaveHttpGetIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+    <wsdl:part name="fs" type="s1:StringArray" />
+    <wsdl:part name="path" type="s:string" />
+    <wsdl:part name="Attachment_Name" type="s:string" />
+    <wsdl:part name="Attachment_Name_new" type="s:string" />
+    <wsdl:part name="Attachment_Type" type="s:string" />
+    <wsdl:part name="Attachment_Desc" type="s:string" />
+    <wsdl:part name="Proprogress" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDateTimeHttpGetIn" />
+  <wsdl:message name="GetDateTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpGetIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoHttpGetIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DownFileHttpGetIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+    <wsdl:part name="PosOffset" type="s:string" />
+    <wsdl:part name="BlockLength" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSHttpGetIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentNumHttpGetIn" />
+  <wsdl:message name="GetAttachmentNumHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectHttpPostIn">
+    <wsdl:part name="AttachmentID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IndexHttpPostIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+    <wsdl:part name="DT_S" type="s:string" />
+    <wsdl:part name="DT_E" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IndexHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="SaveHttpPostIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+    <wsdl:part name="fs" type="s1:StringArray" />
+    <wsdl:part name="path" type="s:string" />
+    <wsdl:part name="Attachment_Name" type="s:string" />
+    <wsdl:part name="Attachment_Name_new" type="s:string" />
+    <wsdl:part name="Attachment_Type" type="s:string" />
+    <wsdl:part name="Attachment_Desc" type="s:string" />
+    <wsdl:part name="Proprogress" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDateTimeHttpPostIn" />
+  <wsdl:message name="GetDateTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpPostIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoHttpPostIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DownFileHttpPostIn">
+    <wsdl:part name="Attachment_ID" type="s:string" />
+    <wsdl:part name="PosOffset" type="s:string" />
+    <wsdl:part name="BlockLength" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSHttpPostIn">
+    <wsdl:part name="REQCODE" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetREQUESTSHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentNumHttpPostIn" />
+  <wsdl:message name="GetAttachmentNumHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AttachmentToolsSoap">
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">选择某一个附件</wsdl:documentation>
+      <wsdl:input message="tns:SelectSoapIn" />
+      <wsdl:output message="tns:SelectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <wsdl:input message="tns:IndexSoapIn" />
+      <wsdl:output message="tns:IndexSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input message="tns:SaveSoapIn" />
+      <wsdl:output message="tns:SaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <wsdl:input message="tns:GetDateTimeSoapIn" />
+      <wsdl:output message="tns:GetDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件信息</wsdl:documentation>
+      <wsdl:input message="tns:GetFileInfoSoapIn" />
+      <wsdl:output message="tns:GetFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载对应附件</wsdl:documentation>
+      <wsdl:input message="tns:DownFileSoapIn" />
+      <wsdl:output message="tns:DownFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <wsdl:input message="tns:GetREQUESTSSoapIn" />
+      <wsdl:output message="tns:GetREQUESTSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <wsdl:input message="tns:GetAttachmentNumSoapIn" />
+      <wsdl:output message="tns:GetAttachmentNumSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AttachmentToolsHttpGet">
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">选择某一个附件</wsdl:documentation>
+      <wsdl:input message="tns:SelectHttpGetIn" />
+      <wsdl:output message="tns:SelectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <wsdl:input message="tns:IndexHttpGetIn" />
+      <wsdl:output message="tns:IndexHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input message="tns:SaveHttpGetIn" />
+      <wsdl:output message="tns:SaveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <wsdl:input message="tns:GetDateTimeHttpGetIn" />
+      <wsdl:output message="tns:GetDateTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteHttpGetIn" />
+      <wsdl:output message="tns:DeleteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件信息</wsdl:documentation>
+      <wsdl:input message="tns:GetFileInfoHttpGetIn" />
+      <wsdl:output message="tns:GetFileInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载对应附件</wsdl:documentation>
+      <wsdl:input message="tns:DownFileHttpGetIn" />
+      <wsdl:output message="tns:DownFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <wsdl:input message="tns:GetREQUESTSHttpGetIn" />
+      <wsdl:output message="tns:GetREQUESTSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <wsdl:input message="tns:GetAttachmentNumHttpGetIn" />
+      <wsdl:output message="tns:GetAttachmentNumHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AttachmentToolsHttpPost">
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">选择某一个附件</wsdl:documentation>
+      <wsdl:input message="tns:SelectHttpPostIn" />
+      <wsdl:output message="tns:SelectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <wsdl:input message="tns:IndexHttpPostIn" />
+      <wsdl:output message="tns:IndexHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input message="tns:SaveHttpPostIn" />
+      <wsdl:output message="tns:SaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <wsdl:input message="tns:GetDateTimeHttpPostIn" />
+      <wsdl:output message="tns:GetDateTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteHttpPostIn" />
+      <wsdl:output message="tns:DeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件信息</wsdl:documentation>
+      <wsdl:input message="tns:GetFileInfoHttpPostIn" />
+      <wsdl:output message="tns:GetFileInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载对应附件</wsdl:documentation>
+      <wsdl:input message="tns:DownFileHttpPostIn" />
+      <wsdl:output message="tns:DownFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <wsdl:input message="tns:GetREQUESTSHttpPostIn" />
+      <wsdl:output message="tns:GetREQUESTSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <wsdl:input message="tns:GetAttachmentNumHttpPostIn" />
+      <wsdl:output message="tns:GetAttachmentNumHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AttachmentToolsSoap" type="tns:AttachmentToolsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/Select" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/Index" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/GetDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/DownFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/GetREQUESTS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <soap:operation soapAction="http://SDETools/AttachmentTools/GetAttachmentNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AttachmentToolsSoap12" type="tns:AttachmentToolsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/Select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/Index" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/Save" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/GetDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/DownFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/GetREQUESTS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <soap12:operation soapAction="http://SDETools/AttachmentTools/GetAttachmentNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AttachmentToolsHttpGet" type="tns:AttachmentToolsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Select">
+      <http:operation location="/Select" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <http:operation location="/Index" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <http:operation location="/Save" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <http:operation location="/GetDateTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <http:operation location="/Delete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <http:operation location="/GetFileInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <http:operation location="/DownFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <http:operation location="/GetREQUESTS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <http:operation location="/GetAttachmentNum" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AttachmentToolsHttpPost" type="tns:AttachmentToolsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Select">
+      <http:operation location="/Select" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Index">
+      <http:operation location="/Index" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <http:operation location="/Save" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <http:operation location="/GetDateTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <http:operation location="/Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <http:operation location="/GetFileInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownFile">
+      <http:operation location="/DownFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetREQUESTS">
+      <http:operation location="/GetREQUESTS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentNum">
+      <http:operation location="/GetAttachmentNum" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AttachmentTools">
+    <wsdl:port name="AttachmentToolsSoap" binding="tns:AttachmentToolsSoap">
+      <soap:address location="http://127.0.0.1:9000/SDETools/AttachmentTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AttachmentToolsSoap12" binding="tns:AttachmentToolsSoap12">
+      <soap12:address location="http://127.0.0.1:9000/SDETools/AttachmentTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AttachmentToolsHttpGet" binding="tns:AttachmentToolsHttpGet">
+      <http:address location="http://127.0.0.1:9000/SDETools/AttachmentTools.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AttachmentToolsHttpPost" binding="tns:AttachmentToolsHttpPost">
+      <http:address location="http://127.0.0.1:9000/SDETools/AttachmentTools.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
